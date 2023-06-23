@@ -1,1 +1,1 @@
-export 'src/widgets/ds_button.dart';
+export 'src/widgets/button/all.dart';
