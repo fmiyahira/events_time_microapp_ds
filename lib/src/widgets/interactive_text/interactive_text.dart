@@ -1,58 +1,40 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:events_time_microapp_ds/src/common/text_font_factor_calculator.dart';
 import 'package:events_time_microapp_ds/src/widgets/interactive_text/interactive_text_theme.dart';
 import 'package:flutter/material.dart';
 
-class DSInteractiveText extends StatefulWidget {
-  final DSInteractiveTextStyle? style;
-  final DSInteractiveTextType type;
+class DSInteractiveText extends StatelessWidget {
+  late DSInteractiveTextTheme interactiveTextTheme;
   final DSInteractiveTextTheme? theme;
+  final DSInteractiveTextStyle? style;
+  final DSInteractiveTextType? type;
   final String text;
   final Color? color;
   final bool enabled;
 
-  const DSInteractiveText({
+  DSInteractiveText({
     super.key,
     this.theme,
     this.style,
-    required this.type,
+    this.type,
     required this.text,
     this.color,
     this.enabled = true,
   });
 
-  @override
-  State<DSInteractiveText> createState() => _DSInteractiveTextState();
-}
-
-class _DSInteractiveTextState extends State<DSInteractiveText> {
-  late DSInteractiveTextTheme theme;
-
-  @override
-  void initState() {
-    super.initState();
-
-    theme = interactiveTextThemeDefault.copyWithOverride(
-        widget.theme ?? themeFromType.copyWithOverride(themeFromStyle));
-  }
-
-  @override
-  void didUpdateWidget(DSInteractiveText oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    theme = interactiveTextThemeDefault.copyWithOverride(
-        widget.theme ?? themeFromType.copyWithOverride(themeFromStyle));
-  }
-
   DSInteractiveTextTheme? get themeFromStyle {
-    if (widget.style == DSInteractiveTextStyle.MILKED) {
+    if (style == DSInteractiveTextStyle.MILKED) {
       return interactiveTextThemeMilked;
     }
 
     return null;
   }
 
-  DSInteractiveTextTheme get themeFromType {
-    switch (widget.type) {
+  DSInteractiveTextTheme? get themeFromType {
+    if (type == null) return null;
+
+    switch (type!) {
       case DSInteractiveTextType.ACTION:
         return interactiveTextThemeAction;
       case DSInteractiveTextType.ACTION_SMALL:
@@ -62,19 +44,38 @@ class _DSInteractiveTextState extends State<DSInteractiveText> {
 
   @override
   Widget build(BuildContext context) {
+    interactiveTextTheme = interactiveTextThemeDefault;
+
+    if (type != null) {
+      interactiveTextTheme =
+          interactiveTextTheme.copyWithOverride(themeFromType);
+    }
+
+    if (style != null) {
+      interactiveTextTheme =
+          interactiveTextTheme.copyWithOverride(themeFromStyle);
+    }
+
+    if (theme != null) {
+      interactiveTextTheme = interactiveTextTheme.copyWithOverride(theme);
+    }
+
     return Text(
-      widget.text,
-      textAlign: theme.textAlign,
-      textScaleFactor: TextFontScaleCalculator.call(theme.fontSize!, context),
+      text,
+      textAlign: interactiveTextTheme.textAlign,
+      textScaleFactor:
+          TextFontScaleCalculator.call(interactiveTextTheme.fontSize!, context),
       style: TextStyle(
-        color: widget.color ??
-            (widget.enabled ? theme.textColor : theme.disabledTextColor),
-        fontSize: theme.fontSize,
-        fontStyle: theme.fontStyle,
-        fontWeight: theme.fontWeight,
-        height: theme.lineHeight,
-        letterSpacing: theme.letterSpacing,
-        decoration: theme.textDecoration,
+        color: color ??
+            (enabled
+                ? interactiveTextTheme.textColor
+                : interactiveTextTheme.disabledTextColor),
+        fontSize: interactiveTextTheme.fontSize,
+        fontStyle: interactiveTextTheme.fontStyle,
+        fontWeight: interactiveTextTheme.fontWeight,
+        height: interactiveTextTheme.lineHeight,
+        letterSpacing: interactiveTextTheme.letterSpacing,
+        decoration: interactiveTextTheme.textDecoration,
       ),
     );
   }

@@ -17,7 +17,7 @@ class DSButton extends StatefulWidget {
     required this.size,
     this.onPressed,
     required this.text,
-    this.enabled = false,
+    this.enabled = true,
     this.focusNode,
     this.buttonTheme,
     required this.buttonStyle,
@@ -32,14 +32,25 @@ class _DSButtonState extends State<DSButton> {
   late VoidCallback? handleOnPressed;
   late DSButtonTheme buttonTheme;
 
+  void _builderTheme() {
+    buttonTheme = buttonThemeDefault
+        .copyWithOverride(themeFromStyle)
+        .copyWithOverride(themeFromSize)
+        .copyWithOverride(widget.buttonTheme);
+  }
+
   @override
   void initState() {
     super.initState();
 
     _setHandleOnPressed();
-    buttonTheme = buttonThemeDefault.copyWithOverride(themeFromStyle
-        .copyWithOverride(widget.buttonTheme)
-        .copyWithOverride(themeFromSize));
+    _builderTheme();
+  }
+
+  @override
+  void didUpdateWidget(covariant DSButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _builderTheme();
   }
 
   DSButtonTheme get themeFromSize {
