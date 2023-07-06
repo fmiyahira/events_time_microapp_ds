@@ -1,8 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:events_time_microapp_ds/events_time_microapp_ds.dart';
-import 'package:events_time_microapp_ds/src/widgets/interactive_text/interactive_text.dart';
-import 'package:events_time_microapp_ds/src/widgets/interactive_text/interactive_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class DSLinkButton extends StatelessWidget {

@@ -13,6 +13,7 @@ export 'src/widgets/feedback_message/all.dart';
 export 'src/widgets/feedback_message_action/all.dart';
 export 'src/widgets/feedback_message_action_dialog/all.dart';
 export 'src/widgets/icon_button/all.dart';
+export 'src/widgets/interactive_text/all.dart';
 export 'src/widgets/iterator/all.dart';
 export 'src/widgets/jumbo_icon/all.dart';
 export 'src/widgets/link_button/all.dart';
