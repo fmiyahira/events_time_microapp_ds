@@ -100,11 +100,11 @@ class DSNavBar extends StatelessWidget implements PreferredSizeWidget {
 
   void _updateAlignment(Widget? widget, AlignmentGeometry alignment) {
     if (widget is DSIconButton) {
-      widget.theme = DSIconButtonTheme(
+      widget.theme = widget.theme?.copyWithOverride(DSIconButtonTheme(
         buttonSize: 32.0,
-        iconPadding: 0,
+        // iconPadding: 0,
         alignment: alignment,
-      );
+      ));
     }
   }
 
@@ -124,19 +124,19 @@ class DSNavBar extends StatelessWidget implements PreferredSizeWidget {
       );
 
   List<Widget> get _buildActions {
-    final List<Widget> actions = <Widget>[];
+    final List<Widget> newActions = <Widget>[];
 
-    actions.asMap().forEach((int index, Widget value) {
-      actions.add(value);
-      final int length = actions.length;
+    actions!.asMap().forEach((int index, Widget value) {
+      newActions.add(value);
+      final int length = actions!.length;
       if (index < length - 1) {
-        actions.add(const SizedBox(
+        newActions.add(const SizedBox(
           width: kComponentSpacerS,
         ));
       }
     });
 
-    return actions;
+    return newActions;
   }
 
   EdgeInsets _navbarPadding(BuildContext context) {
