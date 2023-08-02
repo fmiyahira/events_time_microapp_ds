@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 
 DSPalette defaultPalette = DSPalette(
   primary: const DSColorScale(
-    darker: Color(0xFF17278C),
-    dark: Color(0xFF1A2B9E),
-    base: Color(0xFF223AD2),
-    light: Color(0xFFCAD0F6),
-    lighter: Color(0xFFEDEFFC),
+    darker: Color(0xFF85230c),
+    dark: Color(0xFFffb4a3),
+    base: Color(0xFFFC795B),
+    light: Color(0xFFa63a22),
+    lighter: Color(0xFFffdad2),
   ),
   secondary: const DSColorScale(
-    darker: Color(0xFF0A5C71),
-    dark: Color(0xFF1099BC),
-    base: Color(0xFF31C7ED),
-    light: Color(0xFFC7F0FA),
-    lighter: Color(0xFFECFAFD),
+    darker: Color(0xFF005228),
+    dark: Color(0xFF80d998),
+    base: Color(0xFF8FD7A0),
+    light: Color(0xFF006d38),
+    lighter: Color(0xFF9bf6b2),
   ),
   tertiary: const DSColorScale(
     darker: Color(0xFFB11B50),

@@ -50,6 +50,7 @@ class _DSButtonState extends State<DSButton> {
   @override
   void didUpdateWidget(covariant DSButton oldWidget) {
     super.didUpdateWidget(oldWidget);
+    _setHandleOnPressed();
     _builderTheme();
   }
 

@@ -3,6 +3,7 @@ import 'package:events_time_microapp_ds/src/common/null_safe_block.dart';
 import 'package:flutter/material.dart';
 
 class DSButtonBar extends StatelessWidget {
+  final bool primaryButtonEnabled;
   final String primaryButtonText;
   final Function()? primaryOnPressed;
   final String? secondaryButtonText;
@@ -12,6 +13,7 @@ class DSButtonBar extends StatelessWidget {
 
   const DSButtonBar({
     super.key,
+    this.primaryButtonEnabled = true,
     required this.primaryButtonText,
     required this.primaryOnPressed,
   })  : secondaryButtonText = null,
@@ -21,6 +23,7 @@ class DSButtonBar extends StatelessWidget {
 
   const DSButtonBar.withTwoButtons({
     super.key,
+    this.primaryButtonEnabled = true,
     required this.primaryButtonText,
     required this.primaryOnPressed,
     required this.secondaryButtonText,
@@ -30,6 +33,7 @@ class DSButtonBar extends StatelessWidget {
 
   const DSButtonBar.withText({
     super.key,
+    this.primaryButtonEnabled = true,
     required this.primaryButtonText,
     required this.primaryOnPressed,
     required this.value,
@@ -40,7 +44,7 @@ class DSButtonBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(24.0),
+      padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
         color: DSColors.neutral.s100,
         border: Border(
@@ -64,6 +68,7 @@ class DSButtonBar extends StatelessWidget {
           Expanded(
             child: DSButton(
               size: DSButtonSize.SMALL,
+              enabled: primaryButtonEnabled,
               text: primaryButtonText,
               onPressed: primaryOnPressed,
               buttonStyle: DSButtonStyle.PRIMARY,
