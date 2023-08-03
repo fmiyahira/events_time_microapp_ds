@@ -30,6 +30,7 @@ class DSTextField extends StatefulWidget {
   final TextEditingController? controller;
   final Function()? onTap;
   final Function(String)? onFieldSubmitted;
+  final Function()? onEditingComplete;
   final Function(String)? onChanged;
   final FormFieldValidator<String>? validator;
   final bool obscure;
@@ -67,6 +68,7 @@ class DSTextField extends StatefulWidget {
     this.focusNode,
     this.onTap,
     this.onFieldSubmitted,
+    this.onEditingComplete,
   });
 
   @override
@@ -146,6 +148,7 @@ class _DSTextFieldState extends State<DSTextField> {
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       inputFormatters: widget.inputFormatters,
+      onEditingComplete: widget.onEditingComplete,
       controller: controller,
       obscureText: widget.obscure == true ||
           (hidePassword && widget.type == DSTextFieldType.PASSWORD),
@@ -153,25 +156,34 @@ class _DSTextFieldState extends State<DSTextField> {
       cursorColor:
           hasError ? textFieldTheme.textErrorColor : textFieldTheme.cursorColor,
       decoration: InputDecoration(
-        labelText: widget.labelText,
-        labelStyle: _buildLabelStyle(currentFontScale),
-        errorText: hasError ? (widget.errorText) : null,
-        errorStyle: _buildErrorStyle(currentFontScale,
-            textFieldTheme.padding == const EdgeInsets.all(0)),
-        helperText: widget.helperText,
-        helperStyle: _buildHelperStyle(currentFontScale),
-        errorMaxLines: widget.errorMaxLines,
-        prefixIcon: widget.prefixIcon ?? _buildPrefixIcon(),
-        suffixIcon: widget.suffixIcon ?? _buildSuffixIcon(),
-        isDense: widget.isDense,
-        contentPadding: textFieldTheme.padding,
-        filled: true,
-        fillColor: _getFillColor(),
-        border: textFieldTheme.border,
-        focusedBorder: textFieldTheme.focusedBorder,
-        focusedErrorBorder: textFieldTheme.focusedErrorBorder,
-        counter: widget.hideCounter ? const Offstage() : null,
-      ),
+          labelText: widget.labelText,
+          labelStyle: _buildLabelStyle(currentFontScale),
+          errorText: hasError ? (widget.errorText) : null,
+          errorStyle: _buildErrorStyle(currentFontScale,
+              textFieldTheme.padding == const EdgeInsets.all(0)),
+          helperText: widget.helperText,
+          helperStyle: _buildHelperStyle(currentFontScale),
+          errorMaxLines: widget.errorMaxLines,
+          prefixIcon: widget.prefixIcon ?? _buildPrefixIcon(),
+          suffixIcon: widget.suffixIcon ?? _buildSuffixIcon(),
+          isDense: widget.isDense,
+          contentPadding: textFieldTheme.padding,
+          filled: true,
+          fillColor: _getFillColor(),
+          border: textFieldTheme.border,
+          focusedBorder: textFieldTheme.focusedBorder,
+          focusedErrorBorder: textFieldTheme.focusedErrorBorder,
+          counter: widget.hideCounter ? const Offstage() : null,
+          suffixIconColor: MaterialStateColor.resolveWith(
+              (Set<MaterialState> states) =>
+                  states.contains(MaterialState.focused)
+                      ? textFieldTheme.iconColor!
+                      : Colors.grey),
+          prefixIconColor: MaterialStateColor.resolveWith(
+              (Set<MaterialState> states) =>
+                  states.contains(MaterialState.focused)
+                      ? Colors.grey
+                      : textFieldTheme.iconColor!)),
       onTap: widget.onTap,
       onFieldSubmitted: widget.onFieldSubmitted,
       validator: widget.validator,

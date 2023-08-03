@@ -82,7 +82,7 @@ final DSTextFieldTheme textFieldThemeDefault = DSTextFieldTheme(
   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
   color: DSColors.neutral.s96,
   errorColor: DSColors.error.lighter,
-  iconColor: DSColors.neutral.s24,
+  iconColor: DSColors.primary.base,
   cursorColor: DSColors.primary.base,
   labelColor: DSColors.neutral.s46,
   labelFocusedColor: DSColors.primary.base,
