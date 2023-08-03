@@ -78,6 +78,7 @@ class DSTextField extends StatefulWidget {
 class _DSTextFieldState extends State<DSTextField> {
   late DSTextFieldTheme textFieldTheme;
   String? value;
+  bool validationActivated = false;
   late bool hasError;
   late bool hidePassword;
   late FocusNode focusNode;
@@ -129,7 +130,7 @@ class _DSTextFieldState extends State<DSTextField> {
 
   @override
   Widget build(BuildContext context) {
-    _validateError();
+    if (validationActivated) _validateError();
     _builderTheme();
 
     final double currentFontScale = MediaQuery.of(context).textScaleFactor;
@@ -142,7 +143,7 @@ class _DSTextFieldState extends State<DSTextField> {
       readOnly: widget.readOnly,
       autovalidateMode: widget.autovalidate
           ? AutovalidateMode.always
-          : AutovalidateMode.disabled,
+          : AutovalidateMode.onUserInteraction,
       autofocus: widget.autofocus,
       focusNode: focusNode,
       keyboardType: widget.keyboardType,
@@ -186,7 +187,7 @@ class _DSTextFieldState extends State<DSTextField> {
                       : textFieldTheme.iconColor!)),
       onTap: widget.onTap,
       onFieldSubmitted: widget.onFieldSubmitted,
-      validator: widget.validator,
+      validator: _validator,
       onChanged: _onChange,
     );
   }
@@ -195,6 +196,11 @@ class _DSTextFieldState extends State<DSTextField> {
     return widget.enabled
         ? (hasError ? textFieldTheme.errorColor : textFieldTheme.color)
         : textFieldTheme.inputDisabledColor;
+  }
+
+  String? _validator(String? value) {
+    validationActivated = true;
+    return widget.validator?.call(value);
   }
 
   void _validateError() {
