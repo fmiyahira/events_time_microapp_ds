@@ -273,7 +273,10 @@ class _DSTextFieldState extends State<DSTextField> {
               currentFontScale *
               TextFontScaleCalculator.call(labelTheme.fontSize!, context)
           : null,
-      fontWeight: labelTheme.fontWeight,
+      fontWeight: focusNode.hasPrimaryFocus ||
+              (!focusNode.hasPrimaryFocus && !(value?.isEmpty ?? true))
+          ? FontWeight.bold
+          : FontWeight.normal,
       fontStyle: labelTheme.fontStyle,
       letterSpacing: labelTheme.letterSpacing,
       height: labelTheme.lineHeight,
