@@ -23,6 +23,7 @@ export 'src/widgets/nav_list_item_base/all.dart';
 export 'src/widgets/nav_list_item_chevron/all.dart';
 export 'src/widgets/nav_list_item_icon/all.dart';
 export 'src/widgets/navbar/all.dart';
+export 'src/widgets/phase_button/all.dart';
 export 'src/widgets/radio_button/all.dart';
 export 'src/widgets/select/all.dart';
 export 'src/widgets/switcher/all.dart';
