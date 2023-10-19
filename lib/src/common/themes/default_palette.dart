@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 DSPalette defaultPalette = DSPalette(
   primary: const DSColorScale(
     darker: Color(0xFF85230c),
-    dark: Color(0xFFffb4a3),
+    dark: Color(0xFFa63a22),
     base: Color(0xFFFC795B),
-    light: Color(0xFFa63a22),
+    light: Color(0xFFffb4a3),
     lighter: Color(0xFFffdad2),
   ),
   secondary: const DSColorScale(

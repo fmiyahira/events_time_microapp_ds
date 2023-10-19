@@ -63,7 +63,7 @@ class DSNavListItemElement extends StatelessWidget {
     return GestureDetector(
       onTap: onTap ?? () {},
       child: Column(
-        children: [
+        children: <Widget>[
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -94,10 +94,10 @@ class DSNavListItemElement extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: <Widget>[
                       DSText(
                         title,
                         type: DSTextType.INPUT,

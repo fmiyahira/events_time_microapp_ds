@@ -63,6 +63,8 @@ class DSText extends StatelessWidget {
         return textThemeTypeNumber;
       case DSTextType.NUMBER_SMALL:
         return textThemeTypeNumberSmall;
+      case DSTextType.NUMBER_SMALLER:
+        return textThemeTypeNumberSmaller;
     }
   }
 

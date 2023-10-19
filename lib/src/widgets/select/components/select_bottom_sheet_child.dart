@@ -156,7 +156,7 @@ class _DSSelectBottomSheetChildState extends State<DSSelectBottomSheetChild> {
           size: DSIteratorSize.MINIMAL,
           children: children.map((Map<DSSelectKeys, dynamic> item) {
             return Column(
-              children: [
+              children: <Widget>[
                 SelectListItem(
                   widgetType: widget.widgetType,
                   value: item,

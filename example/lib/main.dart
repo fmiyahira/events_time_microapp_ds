@@ -38,8 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: DSColors.neutral.s100,
       appBar: DSNavBar(
         leading: DSIconButton(
-          icon: Icons.arrow_back_ios,
-          onPressed: () {},
+          icon: Icons.arrow_back_ios_new_rounded,
+          onPressed: () => Navigator.of(context).pop(),
           theme: DSIconButtonTheme(iconPadding: 0, buttonSize: 0),
         ),
       ),
@@ -357,7 +357,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ],
               onSelected: (Map<DSSelectKeys, dynamic> value) {
-                print(value);
                 Navigator.of(context).pop();
               },
             ),

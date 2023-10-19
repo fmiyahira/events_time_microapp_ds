@@ -20,6 +20,7 @@ enum DSTextType {
   LABEL_SMALL,
   NUMBER,
   NUMBER_SMALL,
+  NUMBER_SMALLER,
 }
 
 enum DSTextStyle { SUCCESS, WARNING, ERROR, INFO, MILKED }
@@ -204,6 +205,12 @@ const DSTextTheme textThemeTypeNumber = DSTextTheme(
 const DSTextTheme textThemeTypeNumberSmall = DSTextTheme(
   fontWeight: FontWeight.bold,
   fontSize: 14,
+  lineHeight: 1.428,
+  letterSpacing: -0.2,
+);
+const DSTextTheme textThemeTypeNumberSmaller = DSTextTheme(
+  fontWeight: FontWeight.bold,
+  fontSize: 12,
   lineHeight: 1.428,
   letterSpacing: -0.2,
 );

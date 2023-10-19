@@ -1,7 +1,6 @@
 // ignore_for_file: no_default_cases
 
 import 'package:events_time_microapp_ds/events_time_microapp_ds.dart';
-import 'package:events_time_microapp_ds/src/widgets/select/components/select_enums.dart';
 import 'package:flutter/material.dart';
 
 class SelectListItem extends StatelessWidget {
